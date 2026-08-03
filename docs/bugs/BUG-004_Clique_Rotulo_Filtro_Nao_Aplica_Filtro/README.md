@@ -1,152 +1,146 @@
-# BUG-004 – Clicking the Filter Label Does Not Apply the Filter and Causes Temporary UI Inconsistencies
+# BUG-004 – Clique no rótulo do filtro não aplica o filtro e provoca inconsistências temporárias na interface
 
 ---
 
-# Summary
+# Resumo
 
-When clicking the text (label) of a filter option instead of its corresponding checkbox, the application does not apply the selected filter.
+Ao clicar no texto (rótulo) de uma opção de filtro na barra lateral, o sistema não aplica o filtro correspondente, embora o elemento indique ser clicável.
 
-During this interaction, the interface temporarily renders duplicated products and duplicated filter elements before automatically returning to its original state without applying the filter.
+Durante essa interação, a interface apresenta temporariamente elementos duplicados, incluindo produtos e opções do painel de filtros, antes de retornar automaticamente ao estado original sem aplicar o filtro selecionado.
 
-The issue was reproduced in different product categories, indicating that the behavior is not isolated to a single page.
-
----
-
-# Environment
-
-- **Application:** Advantage Online Shopping
-- **Platform:** Web
-- **Browser:** Google Chrome
+O comportamento foi reproduzido em diferentes categorias de produtos, indicando que o defeito não está restrito a uma única página da aplicação.
 
 ---
 
-# Preconditions
+# Ambiente
 
-- User is on any product listing page.
-- Filter options are available in the left sidebar.
-
----
-
-# Steps to Reproduce
-
-1. Open any product category (e.g. Speakers).
-2. Locate the filter sidebar.
-3. Click the **text (label)** of any filter option instead of its checkbox.
-4. Observe the page behavior.
+- **Aplicação:** Advantage Online Shopping
+- **Plataforma:** Web
+- **Navegador:** Google Chrome
 
 ---
 
-# Expected Result
+# Pré-condições
 
-Clicking the filter label should perform the same action as clicking its corresponding checkbox.
-
-The selected filter should be applied immediately without causing any visual inconsistencies.
-
----
-
-# Actual Result
-
-After clicking the filter label:
-
-- the selected filter is not applied;
-- products are temporarily duplicated;
-- filter options are temporarily duplicated or visually corrupted;
-- after a few moments, the interface returns to its original state without applying the selected filter.
-
-When the checkbox itself is clicked, the filter works correctly.
+- Estar em uma página de listagem de produtos.
+- Existirem filtros disponíveis na barra lateral.
 
 ---
 
-# Impact
+# Passos para reprodução
 
-The defect negatively affects the user experience by suggesting that the filter label is interactive while failing to execute the expected action.
-
-Additionally, the temporary duplication of products and filter elements creates the impression of an unstable interface and reduces the perceived reliability of the application.
-
----
-
-# Severity
-
-**Low**
-
-### Justification
-
-The defect does not block the filtering functionality because users can still apply filters through the corresponding checkbox.
-
-However, the incorrect interaction and temporary UI corruption negatively affect usability.
+1. Acessar uma categoria de produtos (ex.: Speakers).
+2. Localizar qualquer filtro disponível na barra lateral.
+3. Clicar no texto (rótulo) de uma opção do filtro, em vez da checkbox correspondente.
+4. Observar o comportamento da interface.
 
 ---
 
-# Priority
+# Resultado esperado
 
-**Medium**
-
-### Justification
-
-Filtering is a frequently used feature in e-commerce applications.
-
-Although no business rule is violated, the defect directly impacts user interaction and should be corrected to improve interface consistency.
+Ao clicar no texto de uma opção do filtro, o sistema deve executar a mesma ação realizada ao clicar na checkbox correspondente, aplicando corretamente o filtro selecionado sem apresentar inconsistências visuais.
 
 ---
 
-# Evidence
+# Resultado obtido
 
-## Figure 1 – Initial product listing
+Ao clicar no texto de uma opção do filtro:
 
-### Description
+- o filtro não é aplicado;
+- a listagem de produtos apresenta elementos duplicados temporariamente;
+- o painel lateral também exibe opções sobrepostas durante a renderização;
+- após alguns instantes, a interface retorna automaticamente ao estado original, sem aplicar o filtro selecionado.
 
-Product listing displayed normally before interacting with the filter options.
-
-![Figure 1](figure-01-initial-product-list.png)
-
----
-
-## Figure 2 – Clicking the filter label
-
-### Description
-
-The user clicks the text (label) of the manufacturer filter instead of selecting its checkbox.
-
-![Figure 2](figure-02-filter-label-click.png)
+Quando a seleção é realizada diretamente pela checkbox correspondente, o filtro funciona normalmente.
 
 ---
 
-## Figure 3 – Temporary interface inconsistency
+# Impacto
 
-### Description
+O comportamento compromete a experiência do usuário ao indicar que o rótulo do filtro é interativo, sem executar a ação esperada.
 
-After clicking the filter label, products and filter elements are temporarily duplicated before the page automatically returns to its original state.
-
-![Figure 3](figure-03-temporary-ui-duplication.png)
+Além disso, durante o processamento da interação, a interface apresenta uma renderização inconsistente, podendo transmitir ao usuário a impressão de instabilidade da aplicação.
 
 ---
 
-## Figure 4 – Reproduced in another category
+# Severidade
 
-### Description
+**Baixa**
 
-The same behavior was reproduced in the **Laptops** category, indicating that the issue affects multiple product listings.
+### Justificativa
 
-![Figure 4](figure-04-reproduced-in-laptops-category.png)
-
----
-
-## Figure 5 – Correct behavior using the checkbox
-
-### Description
-
-When the corresponding checkbox is selected, the filter is correctly applied and the interface remains stable.
-
-![Figure 5](figure-05-checkbox-filter-working-correctly.png)
+O defeito não impede a utilização da funcionalidade, pois o filtro continua funcionando corretamente quando selecionado pela checkbox. Entretanto, a interação com o rótulo provoca um comportamento incorreto da interface.
 
 ---
 
-# Observations
+# Prioridade
 
-- The issue was reproduced multiple times during testing.
-- The mouse cursor changes to a **pointer (hand)** when hovering over the filter label, indicating that the label is clickable.
-- The defect was reproduced in both the **Speakers** and **Laptops** categories.
-- The issue occurs only when clicking the filter label.
-- Clicking the checkbox applies the filter correctly.
-- During the defect, both products and filter elements are temporarily duplicated.
-- The interface automatically returns to its previous state without applying the selected filter.
+**Média**
+
+### Justificativa
+
+O defeito é facilmente reproduzido durante uma funcionalidade utilizada com frequência e impacta diretamente a experiência do usuário, embora não comprometa as regras de negócio da aplicação.
+
+---
+
+# Evidências
+
+## Figura 1 – Estado inicial da listagem
+
+### Descrição
+
+Categoria exibindo normalmente a listagem de produtos antes da interação com os filtros.
+
+![Figura 1](figure-01-initial-product-list.png)
+
+---
+
+## Figura 2 – Clique no rótulo do filtro
+
+### Descrição
+
+O usuário seleciona o texto da opção do filtro em vez da checkbox correspondente.
+
+![Figura 2](figure-02-filter-label-click.png)
+
+---
+
+## Figura 3 – Interface duplicada temporariamente
+
+### Descrição
+
+Após o clique, produtos e elementos do painel lateral são renderizados temporariamente em duplicidade antes de a página retornar automaticamente ao estado original.
+
+![Figura 3](figure-03-temporary-ui-duplication.png)
+
+---
+
+## Figura 4 – Reprodução em outra categoria
+
+### Descrição
+
+O comportamento também foi reproduzido na categoria **Laptops**, demonstrando que o defeito não está restrito à categoria **Speakers**.
+
+![Figura 4](figure-04-reproduced-in-laptops-category.png)
+
+---
+
+## Figura 5 – Funcionamento correto pela checkbox
+
+### Descrição
+
+Ao selecionar a mesma opção utilizando a checkbox correspondente, o filtro é aplicado corretamente e a interface permanece consistente.
+
+![Figura 5](figure-05-checkbox-filter-working-correctly.png)
+
+---
+
+# Observações
+
+- O comportamento foi reproduzido diversas vezes durante os testes.
+- O cursor do mouse é exibido no formato de **mão**, indicando que o texto da opção do filtro aparenta ser um elemento clicável.
+- O defeito foi reproduzido nas categorias **Speakers** e **Laptops**.
+- O problema ocorre apenas ao clicar no texto da opção do filtro.
+- Ao selecionar a checkbox correspondente, o filtro é aplicado normalmente.
+- Durante a ocorrência, produtos e elementos do painel lateral são renderizados temporariamente em duplicidade antes de a interface retornar ao estado original.
+- A interface retorna automaticamente ao estado inicial, sem necessidade de interação adicional do usuário.
