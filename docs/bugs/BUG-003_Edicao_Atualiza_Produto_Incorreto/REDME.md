@@ -4,7 +4,7 @@
 
 # Resumo
 
-Ao editar um produto diretamente pelo carrinho utilizando um usuário **não autenticado**, o sistema abre corretamente o produto selecionado para edição. Entretanto, após confirmar a alteração, as modificações são aplicadas ao **primeiro produto listado no carrinho**, em vez do item selecionado.
+Ao editar um produto diretamente pelo carrinho utilizando um usuário não autenticado, o sistema abre corretamente o produto selecionado para edição. Entretanto, após confirmar a alteração, as modificações são aplicadas ao **primeiro produto listado no carrinho**, em vez do item selecionado.
 
 Durante os testes foi observado que o problema não afeta apenas a quantidade do produto. Outros atributos, como a **cor**, também passam a corresponder ao produto editado, indicando que o sistema está atualizando o item incorreto do carrinho.
 
@@ -30,35 +30,32 @@ O comportamento não foi reproduzido com usuário autenticado.
 
 # Passos para reprodução
 
-1. Adicionar dois produtos diferentes ao carrinho.
+1. Adicionar dois ou mais produtos diferentes ao carrinho.
 2. Acessar o carrinho de compras.
-3. Selecionar **EDIT** no segundo produto da lista.
-4. Alterar apenas a quantidade do produto selecionado.
-5. Clicar em **ADD TO CART**.
+3. Selecionar **EDIT** em um produto que não seja o primeiro item da lista.
+4. Alterar apenas a quantidade do produto.
+5. Confirmar a alteração clicando em **ADD TO CART**.
 6. Retornar ao carrinho.
-7. Comparar os produtos presentes no carrinho.
 
 ---
 
 # Resultado esperado
 
-O sistema deve aplicar todas as alterações exclusivamente ao produto selecionado para edição, preservando os atributos e informações dos demais itens presentes no carrinho.
-
-Ao confirmar a alteração, apenas o produto editado deve ter sua quantidade atualizada.
+O sistema deve aplicar todas as alterações exclusivamente ao produto selecionado para edição, preservando as informações dos demais itens presentes no carrinho.
 
 ---
 
 # Resultado obtido
 
-Após confirmar a edição, o sistema aplica as alterações ao **primeiro produto listado no carrinho**, mesmo quando outro produto foi selecionado para edição.
+Após confirmar a edição, o sistema aplica as alterações ao primeiro item do carrinho, mesmo quando outro produto foi selecionado para edição.
 
 Durante os testes foi observado que:
 
 - a quantidade do primeiro produto é atualizada;
-- a cor do primeiro produto passa a corresponder à cor do produto editado, mesmo sem qualquer alteração manual de cor;
-- o produto originalmente selecionado permanece inalterado.
+- a cor do primeiro produto passa a corresponder à cor do produto editado, mesmo sem qualquer alteração manual de cor durante o fluxo;
+- o produto originalmente selecionado permanece sem as alterações esperadas.
 
-Ao repetir o mesmo fluxo utilizando um usuário autenticado, apenas o produto selecionado é atualizado corretamente.
+Ao repetir o mesmo fluxo utilizando um usuário autenticado, apenas o produto selecionado é atualizado, conforme esperado.
 
 ---
 
@@ -68,12 +65,12 @@ O defeito compromete a integridade das informações do carrinho ao aplicar alte
 
 Como consequência:
 
-- produtos incorretos podem ser modificados sem conhecimento do usuário;
-- atributos como quantidade e cor tornam-se inconsistentes;
-- o usuário pode concluir uma compra diferente da pretendida;
-- o carrinho deixa de representar corretamente as ações realizadas durante a edição.
+- visualizar atributos incorretos em um produto;
+- modificar quantidades de itens não selecionados;
+- gerar inconsistências no carrinho de compras;
+- concluir uma compra com informações diferentes das pretendidas.
 
-Esse comportamento compromete diretamente a confiabilidade do fluxo de edição do carrinho.
+Esse comportamento compromete a confiabilidade do fluxo de edição do carrinho.
 
 ---
 
@@ -83,7 +80,7 @@ Esse comportamento compromete diretamente a confiabilidade do fluxo de edição 
 
 **Justificativa:**
 
-O defeito altera informações de um produto diferente daquele selecionado pelo usuário, comprometendo diretamente a consistência dos dados do carrinho e podendo resultar em pedidos incorretos.
+O sistema altera informações de um produto diferente daquele selecionado pelo usuário, comprometendo diretamente a consistência dos dados do carrinho e podendo resultar em pedidos incorretos.
 
 ---
 
@@ -93,7 +90,7 @@ O defeito altera informações de um produto diferente daquele selecionado pelo 
 
 **Justificativa:**
 
-A falha afeta uma funcionalidade crítica do fluxo de compra. Como modifica dados de produtos sem a intenção do usuário, sua correção deve ser tratada com alta prioridade.
+O defeito afeta uma funcionalidade crítica do processo de compra. Como impacta diretamente as informações dos produtos presentes no carrinho, sua correção deve ser tratada com alta prioridade.
 
 ---
 
@@ -103,9 +100,9 @@ A falha afeta uma funcionalidade crítica do fluxo de compra. Como modifica dado
 
 ### Descrição
 
-Carrinho contendo dois produtos diferentes antes do início do teste.
+Carrinho contendo múltiplos produtos antes do início do teste.
 
-![Figura 1](figure-01-shopping-cart-initial-state.png)
+![Figura 1](figure-01-cart-initial-state.png)
 
 ---
 
@@ -119,33 +116,33 @@ Usuário seleciona o segundo produto do carrinho para edição e altera apenas s
 
 ---
 
-## Figura 3 – Produto editado permanece inalterado
+## Figura 3 – Alterações aplicadas ao produto incorreto
 
 ### Descrição
 
-Após confirmar a edição, o produto selecionado permanece com sua quantidade original.
+Após confirmar a edição, o primeiro produto do carrinho recebe a nova quantidade, enquanto o produto selecionado permanece inalterado.
 
-![Figura 3](figure-03-selected-product-not-updated.png)
+![Figura 3](figure-03-first-product-updated.png)
 
 ---
 
-## Figura 4 – Alterações aplicadas ao primeiro produto
+## Figura 4 – Alteração indevida da cor do produto
 
 ### Descrição
 
-O primeiro produto do carrinho recebe a nova quantidade e também passa a apresentar a cor do produto editado, evidenciando que as alterações foram aplicadas ao item incorreto.
+Além da quantidade, o primeiro produto passa a apresentar também a cor do produto editado, evidenciando que as alterações foram aplicadas ao item incorreto.
 
-![Figura 4](figure-04-first-product-updated-incorrectly.png)
+![Figura 4](figure-04-color-changed-incorrectly.png)
 
 ---
 
-## Figura 5 – Comparação com usuário autenticado
+## Figura 5 – Comportamento correto com usuário autenticado
 
 ### Descrição
 
-Ao repetir o mesmo fluxo utilizando um usuário autenticado, apenas o produto selecionado é atualizado corretamente, sem alterações indevidas nos demais itens do carrinho.
+Ao repetir o mesmo fluxo utilizando um usuário autenticado, somente o produto selecionado é atualizado, preservando corretamente os demais itens do carrinho.
 
-![Figura 5](figure-05-authenticated-user-expected-behavior.png)
+![Figura 5](figure-05-authenticated-user-correct-behavior.png)
 
 ---
 
