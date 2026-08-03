@@ -82,27 +82,25 @@ docs/
 
 ## 📋 Resumo da Execução
 
-➡️ [Resumo dos Testes](docs/report/README.md)
+➡️ [Resumo dos Testes](docs/report/)
 
 ---
 
 ## ✅ Casos de Teste
 
-➡️ [Casos de Teste Manuais](docs/test-cases/README.md)
+➡️ [Casos de Teste Manuais](docs/test-cases/)
 
 ---
 
 ## 🐞 Relatórios de Bugs
 
-➡️ [Bugs Encontrados](docs/bugs/README.md)
+➡️ [Bugs Encontrados](docs/bugs/)
 
 ---
 
 ## 💡 Melhorias Sugeridas
 
-➡️ [Sugestões de Melhoria](docs/improvements/README.md)
-
----
+➡️ [Sugestões de Melhoria](docs/improvements/)
 
 # 🧪 Ambiente de Testes
 
