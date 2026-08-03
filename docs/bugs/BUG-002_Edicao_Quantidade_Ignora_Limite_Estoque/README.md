@@ -106,13 +106,11 @@ O defeito afeta diretamente um processo crítico da aplicação (Carrinho de Com
 
 # Evidências
 
-## 🎥 Vídeo de reprodução
+## 🎥 Reprodução do defeito
 
-**Descrição**
+A animação abaixo demonstra todo o fluxo de reprodução do defeito, desde a edição da quantidade do produto no carrinho até a permanência da quantidade acima do estoque durante o checkout.
 
-O vídeo abaixo demonstra todo o fluxo de reprodução do defeito, desde a edição da quantidade do produto no carrinho até a permanência da quantidade acima do estoque durante o checkout.
-
-**Arquivo:** `reproduction.mp4`
+![Reprodução do BUG-002](bug-002-reproduction.gif)
 
 ---
 
