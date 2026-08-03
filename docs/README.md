@@ -1,162 +1,78 @@
-# 🧪 Advantage Online Shopping QA
+# 📑 Documentação
 
-Projeto desenvolvido como parte do **Desafio Técnico de Quality Assurance** da **Scoder Tech Studio**.
+Esta pasta reúne toda a documentação produzida durante a execução dos testes manuais da aplicação **Advantage Online Shopping**, desenvolvida como parte do desafio técnico da **Scoder Tech Studio**.
 
-O objetivo deste repositório é apresentar uma documentação completa de testes manuais realizados na aplicação **Advantage Online Shopping**, contemplando planejamento, execução, documentação de bugs, casos de teste e sugestões de melhoria.
+A documentação está organizada em quatro seções principais:
 
----
-
-# 📌 Objetivos
-
-Durante a execução dos testes foram realizados:
-
-- Planejamento dos cenários de teste
-- Execução de testes manuais
-- Testes exploratórios
-- Validação funcional
-- Identificação e documentação de bugs
-- Proposição de melhorias para o produto
+- 📋 Resumo da execução dos testes
+- ✅ Casos de teste manuais
+- 🐞 Relatórios de bugs
+- 💡 Sugestões de melhoria
 
 ---
 
-# 📊 Resumo da Execução
+# 📂 Estrutura da documentação
+
+## 📋 Resumo da Execução
+
+Contém informações gerais sobre a execução dos testes, incluindo:
+
+- Funcionalidades testadas;
+- Ambiente utilizado;
+- Fluxo principal validado;
+- Estratégia de testes adotada.
+
+➡️ **Abrir pasta:** [report](./report)
+
+---
+
+## ✅ Casos de Teste
+
+Documentação dos cenários executados durante os testes manuais.
+
+Casos documentados:
+
+- CT-001 – Login com Sucesso
+- CT-002 – Adicionar Produto ao Carrinho
+- CT-003 – Finalizar Compra com Sucesso
+- CT-004 – Editar Quantidade de Produto
+- CT-005 – Aplicar Filtro por Fabricante
+
+➡️ **Abrir pasta:** [test-cases](./test-cases)
+
+---
+
+## 🐞 Relatórios de Bugs
+
+Documentação completa dos defeitos encontrados durante a execução dos testes.
+
+Total de bugs documentados: **9**
+
+➡️ **Abrir pasta:** [bugs](./bugs)
+
+---
+
+## 💡 Sugestões de Melhoria
+
+Sugestões elaboradas para aprimorar a usabilidade, consistência e experiência do usuário.
+
+Total de melhorias documentadas: **5**
+
+➡️ **Abrir pasta:** [improvements](./improvements)
+
+---
+
+# 📊 Resumo Geral
 
 | Item | Quantidade |
 |------|-----------:|
 | Casos de Teste | **5** |
 | Bugs Documentados | **9** |
 | Melhorias Sugeridas | **5** |
-| Evidências (prints e GIFs) | **30+** |
 
 ---
 
-# 🔍 Fluxo Principal Validado
+**Projeto desenvolvido por Cláudio Eduardo Lemes**  
+**Software Engineering Student**
 
-O fluxo principal utilizado durante a execução dos testes foi:
-
-```
-Login
-   ↓
-Navegação entre produtos
-   ↓
-Pesquisa
-   ↓
-Filtros
-   ↓
-Página do Produto
-   ↓
-Carrinho
-   ↓
-Checkout
-   ↓
-Pagamento
-   ↓
-Confirmação do Pedido
-```
-
-Além desse fluxo, também foram realizados testes exploratórios em funcionalidades secundárias da aplicação.
-
----
-
-# 📁 Estrutura do Projeto
-
-```
-docs/
-│
-├── report/
-│     └── Resumo dos testes realizados
-│
-├── test-cases/
-│     └── Casos de teste manuais
-│
-├── bugs/
-│     └── Relatórios completos dos bugs encontrados
-│
-└── improvements/
-      └── Sugestões de melhoria
-```
-
----
-
-# 📄 Documentação
-
-## 📋 Resumo da Execução
-
-➡️ [Resumo dos Testes](docs/report/)
-
----
-
-## ✅ Casos de Teste
-
-➡️ [Casos de Teste Manuais](docs/test-cases/)
-
----
-
-## 🐞 Relatórios de Bugs
-
-➡️ [Bugs Encontrados](docs/bugs/)
-
----
-
-## 💡 Melhorias Sugeridas
-
-➡️ [Sugestões de Melhoria](docs/improvements/)
-
-# 🧪 Ambiente de Testes
-
-| Item | Valor |
-|------|-------|
-| Aplicação | Advantage Online Shopping |
-| Navegador | Google Chrome |
-| Tipo de Teste | Manual |
-| Plataforma | Web |
-| Sistema Operacional | Windows 11 |
-
----
-
-# 🎯 Tipos de Teste Utilizados
-
-- Teste Funcional
-- Teste Exploratório
-- Teste de Regressão
-- Teste de Usabilidade
-- Smoke Test
-
----
-
-# 🛠 Ferramentas Utilizadas
-
-- Google Chrome
-- Git
-- GitHub
-- Canva
-- Markdown
-- Capturas de Tela
-- GIFs para evidências
-
----
-
-# 📌 Principais Funcionalidades Testadas
-
-- Login
-- Cadastro
-- Pesquisa de produtos
-- Filtros
-- Página do Produto
-- Seleção de Cor
-- Carrinho de Compras
-- Alteração de Quantidade
-- Checkout
-- Pagamento
-- Histórico de Pedidos
-- Recuperação de Senha
-
----
-
-# 👨‍💻 Autor
-
-**Cláudio Eduardo Lemes**
-
-Software Engineering Student
-
-Projeto desenvolvido para o processo seletivo da **Scoder Tech Studio**.
+Desafio Técnico – **Scoder Tech Studio**
