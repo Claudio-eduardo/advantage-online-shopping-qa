@@ -1,8 +1,6 @@
 # 🐞 BUG-001 – Inconsistência na exibição da mensagem de limite de estoque entre usuários autenticados e não autenticados
 
----
-
-# Resumo
+## Resumo
 
 Ao tentar adicionar uma quantidade superior ao estoque disponível pela primeira vez, o sistema exibe corretamente a mensagem informando que apenas a quantidade disponível foi adicionada ao carrinho.
 
@@ -12,7 +10,7 @@ Esse comportamento não ocorre para usuários autenticados, que continuam recebe
 
 ---
 
-# Ambiente
+## Ambiente
 
 - **Aplicação:** Advantage Online Shopping
 - **Navegador:** Google Chrome
@@ -20,14 +18,14 @@ Esse comportamento não ocorre para usuários autenticados, que continuam recebe
 
 ---
 
-# Pré-condições
+## Pré-condições
 
 - Usuário não autenticado.
 - Carrinho vazio.
 
 ---
 
-# Passos para reprodução
+## Passos para reprodução
 
 1. Acessar um produto.
 2. Informar uma quantidade superior ao estoque disponível (ex.: **11 unidades**).
@@ -40,24 +38,24 @@ Esse comportamento não ocorre para usuários autenticados, que continuam recebe
 
 ---
 
-# Resultado esperado
+## Resultado esperado
 
 Sempre que o usuário tentar adicionar uma quantidade superior ao estoque disponível, o sistema deve:
 
-- limitar a quantidade adicionada ao carrinho;
-- exibir a mensagem informando que apenas a quantidade disponível foi adicionada.
+- Limitar a quantidade adicionada ao carrinho.
+- Exibir a mensagem informando que apenas a quantidade disponível foi adicionada.
 
 Esse comportamento deve permanecer consistente independentemente da navegação realizada pelo usuário.
 
 ---
 
-# Resultado obtido
+## Resultado obtido
 
 Após retornar ao produto, o sistema continua limitando corretamente a quantidade adicionada ao carrinho em **10 unidades**, porém deixa de exibir a mensagem de validação para usuários não autenticados.
 
 ---
 
-# Impacto
+## Impacto
 
 Embora a regra de negócio continue funcionando corretamente, a ausência da mensagem pode levar o usuário a acreditar que sua ação não foi processada ou que ocorreu alguma falha na aplicação.
 
@@ -65,7 +63,7 @@ Além disso, o comportamento torna-se inconsistente entre usuários autenticados
 
 ---
 
-# Severidade
+## Severidade
 
 **Média**
 
@@ -73,7 +71,7 @@ A funcionalidade principal permanece operacional, porém há perda de feedback a
 
 ---
 
-# Prioridade
+## Prioridade
 
 **Média**
 
@@ -81,15 +79,15 @@ Não impede a conclusão da compra, mas compromete a experiência do usuário e 
 
 ---
 
-# Evidências
+## Evidências
 
-## Figura 1 – Primeira tentativa
+### Figura 1 – Primeira tentativa
 
-### Descrição
+**Descrição**
 
 Usuário não autenticado tenta adicionar **11 unidades**.
 
-### Resultado observado
+**Resultado observado**
 
 - Mensagem de limite de estoque exibida corretamente.
 - Carrinho ajustado para **10 unidades**.
@@ -98,13 +96,13 @@ Usuário não autenticado tenta adicionar **11 unidades**.
 
 ---
 
-## Figura 2 – Tentativa após retornar à Home
+### Figura 2 – Tentativa após retornar à Home
 
-### Descrição
+**Descrição**
 
 Após retornar à página inicial e acessar novamente o mesmo produto, o usuário tenta adicionar novamente uma quantidade superior ao estoque.
 
-### Resultado observado
+**Resultado observado**
 
 - Carrinho permanece limitado a **10 unidades**.
 - A mensagem de validação deixa de ser exibida.
@@ -113,7 +111,7 @@ Após retornar à página inicial e acessar novamente o mesmo produto, o usuári
 
 ---
 
-# Observações
+## Observações
 
 - O comportamento foi reproduzido em aproximadamente **6 produtos diferentes**.
 - O problema ocorre apenas para usuários **não autenticados**.
